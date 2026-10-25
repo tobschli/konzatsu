@@ -25,4 +25,3 @@ options:
 schema:
   url: str
   listen_port: port
-image: ghcr.io/tobschli/konzatsu-{arch}
