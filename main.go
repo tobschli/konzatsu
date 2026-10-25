@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	URL     = "https://information.konamisportsclub.jp/ksc/007876/"
+	URL     = "https://information.konamisportsclub.jp/ksc/004479/"
 	pattern = "congestion-thresshold([1-3])"
 )
 
@@ -79,6 +79,9 @@ func main() {
 	reg := prometheus.NewRegistry()
 	reg.MustRegister(newThresholdCollector())
 
+	regex = regexp.MustCompile(pattern)
+
 	http.Handle("/metrics", promhttp.HandlerFor(reg, promhttp.HandlerOpts{}))
+	fmt.Println("Ready")
 	panic(http.ListenAndServe(":2112", nil))
 }
