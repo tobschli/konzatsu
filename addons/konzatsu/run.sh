@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/usr/bin/bashio
 
 URL=$(bashio::config 'url')
 PORT=$(bashio::config 'listen_port')
