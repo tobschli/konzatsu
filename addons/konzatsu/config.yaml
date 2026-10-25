@@ -1,0 +1,28 @@
+name: Konzatsu
+version: "1.0.0"
+slug: konzatsu
+description: Prometheus exporter for KONAMI Sports Club congestion levels
+url: https://github.com/tobschli/konzatsu
+arch:
+  - amd64
+  - aarch64
+  - armhf
+  - armv7
+startup: services
+hassio_api: false
+hass_role: []
+homeassistant_api: false
+auth_api: false
+host_network: false
+harmless: true
+ports:
+  2112/tcp: 2112
+map:
+  - share:_rw
+options:
+  url: https://information.konamisportsclub.jp/ksc/004479/
+  listen_port: 2112
+schema:
+  url: str
+  listen_port: port
+image: ghcr.io/tobschli/konzatsu-{arch}
