@@ -1,5 +1,5 @@
 name: Konzatsu
-version: "1.0.3"
+version: "1.0.4"
 slug: konzatsu
 description: Prometheus exporter for KONAMI Sports Club congestion levels
 url: https://github.com/tobschli/konzatsu

@@ -12,7 +12,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-const pattern = "congestion-thresshold([1-3])"
+const pattern = "congestion-thresshold([0-3])"
 
 var (
 	url    = flag.String("url", "https://information.konamisportsclub.jp/ksc/004479/", "URL to scrape for congestion level")
