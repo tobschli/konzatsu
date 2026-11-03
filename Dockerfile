@@ -1,4 +1,4 @@
-# Build: docker build -f Dockerfile addons/konzatsu -t konzatsu .
+# Build: docker build -t konzatsu .
 FROM golang:1.27-alpine AS builder
 WORKDIR /src
 COPY go.mod go.sum ./
