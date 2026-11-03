@@ -17,10 +17,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Read add-on version
+      - name: Read version
         id: version
         run: |
-          ver="$(grep -m1 '^version:' addons/konzatsu/config.yaml | sed 's/.*"\(.*\)".*/\1/')"
+          if [ "${{ github.ref_type }}" = tag ]; then
+            ver="${GITHUB_REF#refs/tags/v}"
+          else
+            # Manual run: use the latest v* tag (default branch is checked out)
+            ver="$(git ls-remote --tags origin 'refs/tags/v*' --refs --sort=-v:refname | sed 's|.*refs/tags/v||' | head -1)"
+          fi
+          if [ -z "${ver}" ]; then
+            echo "No v* tag found. Tag a release first: git tag v1.0.4 && git push --tags" >&2
+            exit 1
+          fi
           echo "version=${ver}" >> "$GITHUB_OUTPUT"
 
       - name: Set up QEMU
